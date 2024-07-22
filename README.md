@@ -362,8 +362,8 @@ And then we can type ```cat auth.log | grep password``` to pull out all the "lin
 
   ![VM create](https://github.com/user-attachments/assets/fd16cae4-cdfd-45c8-b0a3-d94a04c9677d)
 
-We can see a whole bunch of **Failed Password for Invalid User**:
-- Meaning some entities were trying to **Login to our Linux VM** from **Random IP Addresses** using **Wrong Credentials**.
+We can see a whole bunch of **Failed Password for Invalid User** Events:
+- Meaning ➜ some entities were trying to **Login to our Linux VM** from **Random IP Addresses** using **Wrong Credentials**.
 
 We can also see our **Successful Logins** using the **Username** ```labuser```:
 
