@@ -377,7 +377,7 @@ cat /var/log/auth.log | grep Accepted
 ```
 <br>
 
-- ```josh``` ➜  we can see all the **Unsuccessful Login Attempts** with the Username "josh"
+- ```josh``` ➜  we can see all the **Unsuccessful Login Attempts** with the Username "josh":
 
 ```commandline
 cat /var/log/auth.log | grep josh
