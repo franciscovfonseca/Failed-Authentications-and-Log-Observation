@@ -75,7 +75,7 @@ Now we're going to log into the Attack VM to make sure it works:
 <h2></h2>
 
 <details close> 
-<summary> <h2>2️⃣ Generate some failed RDP Logs against the windows-vm</h2> </summary>
+<summary> <h2>2️⃣ Generate some Failed RDP Logs against the windows-vm</h2> </summary>
 <br>
 
 > From within the **Attack Vm**, we're going to **attemp to RDP connect to the Windows VM**.
@@ -134,55 +134,64 @@ Double Click the **"New Added PC"** and type in the **Username & Password Creden
 <h2></h2>
 
 <details close> 
-<summary> <h2>3️⃣ Install SQL Server Evaluation</h2> </summary>
+<summary> <h2>3️⃣ Generate some Failed SQL Server Authentication Logs against the windows-vm</h2> </summary>
 <br>
 
-> We're going to use SQL Server as another component of our Honeynet that we can let attacker discover and try to hack into.
+> Remember that we installed the SQL Server Database in the Windows VM ➜ so we're going to attempt to log into it now.
 > 
-> We're not actually going to do anything with SQL, we're not going to put any data in there, it's just going to serve as another Endpoint for people to attack and we're going to ghenerate logs with it.
+> Still within the **Attack VM**, we're going to install **SSMS** ➜ which we'll use to attempt to log into the SQL Server
 
 <br>
 
-You can **[Download SQL Server here](https://www.microsoft.com/en-us/evalcenter/evaluate-sql-server-2019)**
+Go back to the **Attack VM** > Using **Microsoft Edge** > You can **[Download SSMS through this link](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)**
 
-Download the EXE file and install it on the VM:
-
-![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
-
-In this case we're going to **Download Media**:
+Open the **SSMS-Setup-ENU.exe** File from the Downloads > **Install** it
 
 ![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
 
-We'll download an **ISO** and put it on the **Desktop**:
+![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
+
+
+>   <details close> 
+>   
+> **<summary> 💡 Note</summary>**
+> 
+> We're going to use this **SSMS** to **Connect to the SQL Server in our Windows VM**.
+> 
+> Once the **Installation is Completed** ➜ we'll take the **Windows VM's Public IP Address** (which is where the **SQL Server** is) ➜ and we're going to **Generate some Logs** by attempting to Log Into it as a bad actor.
+> 
+> And then at the end of this lab we'll log back into the **Windows VM** again and **Inspect the Logs**
+> 
+> We'll also log into the **Linux VM** and **Inspect the Logs** in there as well.
+>   </details>
+
+<br>
+
+<h2></h2>
+
+<br>
+
+Now we're going to open **SSMS**:
 
 ![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
 
-After it's been downloaded, right-click the ISO file and click **Mount**:
+Then we'll copy the **IP Address of the Windows VM** ➜ which has the **SQL Server**
+
+- in Server Name: we'll Paste the **IP Address**
+- Authentication: **SQL Server Authentication**
+- then our Real **Username** is ```sa``` & **Password** is ```Cyberlab123!```
+
+  - but we're going to login with a user that doesn't exist ➜ so we can **Generate Failed Logs**
 
 ![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
 
-Look for the **SqlSetup** on your PC and then actaully install SQL by clicking on the **setup** file:
+We'll **Attemp and Fail** to Login 2 more times to **Generate a total of 3 Failed Logins**
+
+Then we'll "Login For Real" with the correct **Username** & **Password** just to show that we can Login from **Australia (Attack VM)**
 
 ![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
 
-Afte the SQL setup opens, just click **Instalation** and then **New SQL Server stand-alone installation**:
-
-![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
-
-Accept the "license terms" and click "Next" until reaching the **Feature Selection** Tab where you want to tick the ☑ **Database Engine Services** check box:
-
-We'll use Mixed Mode for SQL Server Authentication and Windows Authentication:
-
-By default SQL Server can have an admin account called "sa" (for system administrator), so we'll set up the password for this
-
-- Username: ```sa``` (default)
-- Password: ```Cyberlab123!```
-
-We'll also add the current Windows User, which will make our User ```labuser``` able to Authenticate and "log into" our SQL instance.
-
-Click on **"Add Current User"** and it will add the current user ```labuser``` as well
-
-![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
+We can then disconnect from the Server:
 
 ![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
 
@@ -194,36 +203,43 @@ Click on **"Add Current User"** and it will add the current user ```labuser``` a
 <summary> <h2>4️⃣ Install SSMS (SQL Server Management Studio)</h2> </summary>
 <br>
 
-> The next thing we're going to do is install **SQL Server Management Studio**.
+> Lastly, we're going to Generate some Failed Authentications aginst the Linux Server, to Generate some Logs in our Linux VM.
 > 
-> This is just an app that essentially let's us log into **SQL Server Database** and visualize things.
-> 
-> Basically we're going to use SSMS to attempt to log in and **Generate Logs** or **Failure to Authenticate Logs**.
+> This will allow us to Generate some Logs in our Linux VM & and analyse them later as well
 
 <br>
 
-You can **[Download SSMS here](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)**
-
-Open the **SSMS Setup ENU exe** File, install it and Restart the Vm:
+Going back to the **Azure Portal** > Go to **Virtual machines** > Open the ```linux-vm``` > copy its **Public IP Address** 
 
   ![VM create](https://github.com/user-attachments/assets/fd16cae4-cdfd-45c8-b0a3-d94a04c9677d)
 
   ![VM create](https://github.com/user-attachments/assets/fd16cae4-cdfd-45c8-b0a3-d94a04c9677d)
 
+Then inside the Attack VM ➜ we'll open **Powershell**
 
->   <details close> 
->   
-> **<summary> 💡 Note</summary>**
-> 
-> Again this is just an App that let's us connect to our SQL Database.
-> 
-> Because our Virtual Machine is completely exposed to the Internet: The NSG is wide open & the local Firewall is wide open ➜ theoretically anyone could attempt to connect to the SQL Database we just installed.
-> 
-> It doesn't have to be someone on the VM, it can be someone from anywhere worldwide, as long as they can access our VM's IP Address.
-> 
->   </details>
+  ![VM create](https://github.com/user-attachments/assets/fd16cae4-cdfd-45c8-b0a3-d94a04c9677d)
 
-<br>
+Now we can **SSH** ➜ use a **Fake Username** ```josh``` ➜ this Username doesn't exist on the **Linux VM**
+
+So we'll type: ```ssh "FAKE USERNAME"@"DESTINATION (which is the Linux VM)"```  ➜ press "Enter" to attempt to connect:
+
+  ![VM create](https://github.com/user-attachments/assets/fd16cae4-cdfd-45c8-b0a3-d94a04c9677d)
+
+Type **"yes"** to Accept the Certificate:
+
+  ![VM create](https://github.com/user-attachments/assets/fd16cae4-cdfd-45c8-b0a3-d94a04c9677d)
+
+Then it'll ask us to **Enter our Password**
+
+This User doesn't even exist: so whatever Password we put ➜ it's going to **Fail to Login & Create a Log**.
+
+Basically we're attempting to **Brute-Force into the Linux VM**  ➜ do it 3 times to **Generate 3 Failed Logins**:
+
+  ![VM create](https://github.com/user-attachments/assets/fd16cae4-cdfd-45c8-b0a3-d94a04c9677d)
+
+Then we can actually Shut Down our **Attack VM** ➜ we won't be using it anymore for this Lab:
+
+  ![VM create](https://github.com/user-attachments/assets/fd16cae4-cdfd-45c8-b0a3-d94a04c9677d)
 
   </details>
 
