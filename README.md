@@ -78,13 +78,13 @@ Now we're going to log into the Attack VM to make sure it works:
 <summary> <h2>2️⃣ Generate some failed RDP Logs against the windows-vm</h2> </summary>
 <br>
 
-> From within the Attack Vm, we're going to attemp to RDP connect to the Windows VM.
+> From within the **Attack Vm**, we're going to **attemp to RDP connect to the Windows VM**.
 > 
-> We're going to fail to log in, but it will generate some Logs for us to look at laterinside the Windows VM.
+> The logins will fail, but some Logs will be generated for us to look at later inside the Windows VM.
 
 <br>
 
-Go back to the Azure Portal and copy the IP Address of the Windows VM:
+Go back to the **Azure Portal** and copy the **Public IP Address of the Windows VM**:
 
 ![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
 
@@ -100,21 +100,21 @@ Since this user does not exist in the Windows Vm ➜ the **Log In will Fail**
 
 Repeat the **Failed Log In** 2 more times with the same **Wrong Username & Password**
 
+<br>
+
 ✅ So 3 Logs have been Generated on the Windows VM ➜ which we will analyse later
 
 <br>
 
-  </details>
-
 <h2></h2>
 
-
+<br>
 
 Copy the Attack Vm's **Public IP Address**:
 
 ![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
 
-We're going to open **Microsoft Remote Desktop** > Add a New PC > Paste the IP Address for the Attack VM
+We're going to open **Microsoft Remote Desktop** > **Add a New PC** > Paste the **IP Address for the Attack VM**
 
 ![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
 
@@ -127,30 +127,7 @@ Double Click the **"New Added PC"** and type in the **Username & Password Creden
 
 ✅ We were able to log in to the VM
 
-
-
-
-
-
-
-
-
-
-> By **Turnning off the Firewall**, the Virtual Machine is essentially going to respond to ping requests and all sorts of traffic ➜ making it easier to be discovered on the internet by bad actors.
-> 
-> We have previously opened up the **NSG** (which in a sense is the **Azure Firewall**), but inside of the Operating System there's another **Firewall** ➜ so we're going to disable that.
-
 <br>
-
-Back in our Wondows Vm, the first thing to do is **Disable the Internal Windows Firewall**.
-
-Inside the Windows Firewall ➜ click on **Windows Defender Firewall Properties**.
-
-Then trun of the **Firewall State** for the **Domain**, **Private** and **Public Profiles**:
-
-![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
-
-![azure portal](https://github.com/user-attachments/assets/59c10e90-33da-4cf3-a40c-802f76edf858)
 
   </details>
 
