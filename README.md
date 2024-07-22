@@ -1,6 +1,6 @@
 <br>
 
-# Logging & Monitoring: Security Operations
+# Failed Authentications & Log Observation: Security Operations
 
 <br>
 
