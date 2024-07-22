@@ -1,6 +1,6 @@
 <br>
 
-# Failed Authentications & Log Observation: Security Operations
+# Failed Authentications & Log Observation
 
 <br>
 
@@ -11,7 +11,7 @@
 
 In this lab we're going to create a 3ʳᵈ Virtual Machine called ```Attack-VM``` and we're going to perform actions against our current environment.
 
-So from the **Attack-VM** we're going to act as an attacker and attemp to log into the **SQL Server Database**, the **Windows Vm** & the **Linux VM with SSH**.
+From the **Attack-VM** we're going to act as an attacker and attemp to log into the **SQL Server Database**, the **Windows Vm** & the **Linux VM with SSH**.
 
 After that we'll observe the **Logs Generated** from those actions.
 
