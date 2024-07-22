@@ -15,6 +15,7 @@ So from the **Attack-VM** we're going to act as an attacker and attemp to log in
 
 After that we'll observe the **Logs Generated** from those actions.
 
+We are basically simulating someone trying to break into our environmet, and then see what logs are created, just to get a good sense of what happens behind the scenes.
 
 <br />
 
@@ -231,6 +232,63 @@ Then we can actually Shut Down our **Attack VM** ➜ we won't be using it anymor
 > We'll do the same thing with the **Linux VM** ➜ look at the **Logs we Generated** by attempting to Log into it
 
 <br>
+
+Inside our **Windows Vm** > Copy the **Public IP Address**:
+
+  ![VM create](https://github.com/user-attachments/assets/6922b5a7-bf0e-46b9-ac0b-b79be1074f97)
+
+Open **Remote Desktop** > connect to the **Windows VM**
+
+  ![VM create](https://github.com/user-attachments/assets/6922b5a7-bf0e-46b9-ac0b-b79be1074f97)
+
+Then open **Event Viewer**:
+
+  ![VM create](https://github.com/user-attachments/assets/6922b5a7-bf0e-46b9-ac0b-b79be1074f97)
+
+Again, this is where the logs are ➜ First we're going to check out the **"Security"** ones.
+
+These are the logs for when someone attempts to **Connect with Remote Desktop** or even try to **Map a Remote File Share**.
+
+Event ```4625``` is the **Failed Logon Event** ➜ and we can see a whole bunch of them here:
+
+  ![VM create](https://github.com/user-attachments/assets/6922b5a7-bf0e-46b9-ac0b-b79be1074f97)
+
+We didn't generate most of these.
+
+If we **"Filter Current Log"** > and type ```4625``` just to see the **Failed Logons** ➜ it'll show us only the **Failed Logons**:
+
+  ![VM create](https://github.com/user-attachments/assets/6922b5a7-bf0e-46b9-ac0b-b79be1074f97)
+
+We can see the the **"Account Name"** is different for each Event ➜ and these are **actual bad actors or bots** on the Internet.
+
+These are not our **Intentional Failed Logons** ➜ these are other randon entities trying to **Logon to our VM**, since it's been on for the previous 10 hours.
+
+  ![VM create](https://github.com/user-attachments/assets/6922b5a7-bf0e-46b9-ac0b-b79be1074f97)
+
+If we scroll down we can actually find our own Failed Logon with the Username ```josh```
+
+  ![VM create](https://github.com/user-attachments/assets/6922b5a7-bf0e-46b9-ac0b-b79be1074f97)
+
+⚠️ Aside from our 3 **Intentionally Generated Failed Logs** ➜ we can see that there were almost **2000 different Attempts to Break Into our Windows VM**:
+
+  ![VM create](https://github.com/user-attachments/assets/6922b5a7-bf0e-46b9-ac0b-b79be1074f97)
+
+<br>
+
+<h2></h2>
+
+<br>
+
+> Next, because SQL Server is actually installed on this Windows VM ➜ we're going to check the **"Application"** Logs.
+> 
+> In the Windows Event Viewer, the **SQL Logs** get registered in the **Application Tab** instead of the **Security Tab**.
+
+<br>
+
+Right away ➜  we can see our Successful Login with the User ```sa```:
+
+  ![VM create](https://github.com/user-attachments/assets/6922b5a7-bf0e-46b9-ac0b-b79be1074f97)
+
 
 
 
