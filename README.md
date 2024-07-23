@@ -5,11 +5,11 @@
 <br>
 
 
-![Banner](https://github.com/user-attachments/assets/74cda7d0-a70b-4459-b53a-70078edb326f)
+![Banner](https://github.com/user-attachments/assets/793bf339-ce46-4435-8abd-73758163828a)
 <br />
 <br />
 
-In this lab we're going to create a 3ʳᵈ Virtual Machine called ```Attack-VM``` and we're going to perform actions against our current environment.
+In this lab we're going to create a 3ʳᵈ Virtual Machine called ```attack-vm``` and we're going to perform actions against our current environment.
 
 From the **Attack-VM** we're going to act as an attacker and attemp to log into the **SQL Server Database**, the **Windows Vm** & the **Linux VM with SSH**.
 
