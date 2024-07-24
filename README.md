@@ -2,10 +2,8 @@
 
 <h1 align="center">Failed Authentications & Log Observation</h1>
 
-<br>
-
 <p align="center">
-<img width="700" src="https://github.com/user-attachments/assets/9b283a97-675c-4586-866b-a7e3328026bf" alt="Banner"/>
+<img width="800" src="https://github.com/user-attachments/assets/10bb4eb4-124b-41ff-85c9-7a56d87ac47c" alt="Banner"/>
 <br />
 
 <br />
