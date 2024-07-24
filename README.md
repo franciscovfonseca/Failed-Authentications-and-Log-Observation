@@ -1,12 +1,13 @@
 <br>
 
-# Failed Authentications & Log Observation
+<h1 align="center">Failed Authentications & Log Observation</h1>
 
 <br>
 
-
-![Banner](https://github.com/user-attachments/assets/793bf339-ce46-4435-8abd-73758163828a)
+<p align="center">
+<img width="700" src="https://github.com/user-attachments/assets/9b283a97-675c-4586-866b-a7e3328026bf" alt="Banner"/>
 <br />
+
 <br />
 
 In this lab we're going to create a 3ʳᵈ Virtual Machine called ```attack-vm``` and we're going to perform actions against our current environment.
